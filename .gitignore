@@ -1,4 +1,6 @@
 /datasets
 /custom test data
 /project_env
+/server/datas
+/server/.ipynb_checkpoints
 .ipynb_checkpoints
