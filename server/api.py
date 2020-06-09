@@ -103,7 +103,7 @@ def tampered_image_processing():
         for i in zip(model.predict_proba(img, batch_size=50), model.predict_classes(img, batch_size=50), model.predict(img, batch_size=50)):
             val = {
                 'status': 200,
-                'message': 'Predicting Image Success',
+                'message': 'Predicting Image Succeed',
                 'results': {
                     'file': filepath,
                     'prediction': get_class_name(i[1]),
