@@ -3,4 +3,5 @@
 /project_env
 /server/datas
 /server/.ipynb_checkpoints
+/server/__pycache__
 .ipynb_checkpoints
