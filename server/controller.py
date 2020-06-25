@@ -49,11 +49,11 @@ def get_class_name(label):
 
 def choose_model(version):
     if version == 'v1':
-        used_model = '../saved-models/model-v1-with-casia.h5'
+        used_model = 'saved-models/model-v1-with-casia.h5'
     elif version == 'v2':
-        used_model = '../saved-models/model-v2-with-mixed-dataset.h5'
+        used_model = 'saved-models/model-v2-with-mixed-dataset.h5'
     elif version == 'v3':
-        used_model = '../saved-models/model-v3-with-real-fake-dataset.h5'
+        used_model = 'saved-models/model-v3-with-real-fake-dataset.h5'
     else:
         val = {
             'status': 400,
