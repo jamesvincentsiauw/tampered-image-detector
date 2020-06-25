@@ -1,3 +1,4 @@
+from flask import jsonify
 from PIL import Image, ImageChops, ImageEnhance
 from keras.models import load_model
 from keras.preprocessing import image
