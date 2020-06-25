@@ -4,6 +4,7 @@ from keras.preprocessing import image
 from skimage import transform
 import numpy as np
 import os
+import shutil
 
 ALLOWED_EXTENSIONS = {'tif','jpg', 'jpeg', 'png'}
 
@@ -76,7 +77,7 @@ def files_handler(file):
     filepath = 'datas/uploads/'
     # save file to /datas/files/finalTasks
     file.save(os.path.join(filepath, file.filename))
-    
+
     return filepath+file.filename
 
 def process_prediction(model, img):
@@ -86,11 +87,11 @@ def process_prediction(model, img):
                     'status': 200,
                     'message': 'Predicting Image Succeed',
                     'results': {
-                        'file': filepath,
                         'prediction': get_class_name(i[1]),
                         'probability': str(round(max(i[0])*100, 2))+"%"
                     }
                 }
+        shutil.rmtree('datas')
         return val
     except Exception as e:
         return {'message': e.args}

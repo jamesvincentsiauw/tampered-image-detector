@@ -23,4 +23,4 @@ def tampered_image_processing():
         })
    
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", threaded=False)
+    app.run(threaded=False)
