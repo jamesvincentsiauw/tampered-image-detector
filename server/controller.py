@@ -56,8 +56,8 @@ def choose_model(version):
         used_model = 'saved-models/model-v3-with-real-fake-dataset.h5'
     else:
         val = {
-            'status': 400,
-            'message': 'Bad Parameter!'
+            'status': "Error",
+            'message': 'Model Not Found!'
         }
         return jsonify(val), 400
     return used_model
@@ -65,7 +65,7 @@ def choose_model(version):
 def files_handler(file):
     if not allowed_file(file.filename):
         val = {
-            'status': 400,
+            'status': "Error",
             'message': 'Bad Parameter, Check File Extension!'
         }
         return jsonify(val), 400
@@ -85,7 +85,7 @@ def process_prediction(model, img):
     try:
         for i in zip(model.predict_proba(img, batch_size=50), model.predict_classes(img, batch_size=50), model.predict(img, batch_size=50)):
                 val = {
-                    'status': 200,
+                    'status': "Success",
                     'message': 'Predicting Image Succeed',
                     'results': {
                         'prediction': get_class_name(i[1]),
@@ -95,4 +95,7 @@ def process_prediction(model, img):
         shutil.rmtree('datas')
         return val
     except Exception as e:
-        return {'message': e.args}
+        return {
+            'status': "Error",
+            'message': e.args
+        }

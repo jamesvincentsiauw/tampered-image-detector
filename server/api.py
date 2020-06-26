@@ -7,20 +7,23 @@ app = Flask(__name__)
 def tampered_image_processing():
     try:
         requested_model = request.form['model']
-        
+
         # Load the model
         model = load_model(choose_model(requested_model))
-        
+
         # Process file
         filepath = files_handler(request.files['img'])
         img = load(filepath)
-        
+
         result = process_prediction(model, img)
         return jsonify(result), 200
+    
     except Exception as e:
-        return jsonify({
+        print(e)
+        return {
+            'status': "Error",
             'message': e.args
-        })
+        }
    
 if __name__ == "__main__":
     app.run(threaded=False, host='0.0.0.0')
