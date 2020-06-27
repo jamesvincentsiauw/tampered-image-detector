@@ -8,6 +8,13 @@ def tampered_image_processing():
     try:
         requested_model = request.form['model']
 
+        if choose_model(requested_model) == "error":
+            val = {
+            'status': "Error",
+            'message': 'Model Not Found!'
+            }
+            return jsonify(val), 400
+
         # Load the model
         model = load_model(choose_model(requested_model))
 

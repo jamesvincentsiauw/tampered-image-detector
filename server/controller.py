@@ -1,4 +1,3 @@
-from flask import jsonify
 from PIL import Image, ImageChops, ImageEnhance
 from keras.models import load_model
 from keras.preprocessing import image
@@ -55,11 +54,7 @@ def choose_model(version):
     elif version == 'v3':
         used_model = 'saved-models/model-v3-with-real-fake-dataset.h5'
     else:
-        val = {
-            'status': "Error",
-            'message': 'Model Not Found!'
-        }
-        return jsonify(val), 400
+        return "error"
     return used_model
 
 def files_handler(file):
