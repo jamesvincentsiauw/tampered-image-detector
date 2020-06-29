@@ -28,13 +28,19 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              required: 
+                - img
+                - model
               properties:
-                model:
-                  type: string
-                  format: model
                 img:
                   type: string
                   format: binary
+                  description: Please Upload .jpeg/.jpg/.png/.tif File
+                model:
+                  type: string
+                  format: model
+                  example: v2
+                  description: choose v1/v2/v3
       responses:
         '200':
           description: Prediction Succeed
