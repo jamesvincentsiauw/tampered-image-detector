@@ -1,0 +1,83 @@
+openapi: 3.0.0
+
+servers:
+  - description: Local Development URL
+    url: http://localhost:5000/api
+    
+info:
+  description: DOKU - Tampered Image Detection System
+  version: "1.0.0"
+  title: DOKU - Tampered Image Detection System
+  contact:
+    email: jamesvincentsiauw@gmail.com
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+
+paths:
+  /predictor:
+    post:
+      tags: 
+        - Main
+      summary: Predict Images
+      operationId: app.tampered_image_processing
+      description: |
+        By passing the chosen model and the image file, you can get prediction whether it is real or tampered
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                model:
+                  type: string
+                  format: model
+                img:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Prediction Succeed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    format: status
+                    example: Success
+                  message:
+                    type: string
+                    format: message
+                    example: Predicting Image Succeed
+                  result: 
+                    $ref: '#/components/schemas/Result'
+        '400':
+          description: Bad input parameter
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    format: status
+                    example: Error
+                  message:
+                    type: string
+                    format: message
+                    example: Model not found
+components:
+  schemas:
+    Result:
+      type: object
+      properties:
+        prediction:
+          type: string
+          format: classification
+          example: Real Image
+        probability:
+          type: string
+          format: percentage
+          example: 905%
