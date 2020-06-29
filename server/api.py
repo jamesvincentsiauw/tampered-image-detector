@@ -1,7 +1,13 @@
 from flask import Flask, request, jsonify
+from healthcheck import HealthCheck, EnvironmentDump
 from controller import *
 
 app = Flask(__name__)
+app.config["DEBUG"] = False
+
+# Configure Healthcheck
+health = HealthCheck()
+envdump = EnvironmentDump()
 
 @app.route('/api/predictor', methods=['POST'])
 def tampered_image_processing():
@@ -10,8 +16,8 @@ def tampered_image_processing():
 
         if choose_model(requested_model) == "error":
             val = {
-            'status': "Error",
-            'message': 'Model Not Found!'
+                'status': "Error",
+                'message': 'Model Not Found!'
             }
             return jsonify(val), 400
 
@@ -31,6 +37,12 @@ def tampered_image_processing():
             'status': "Error",
             'message': e.args
         }, 500
+
+
+# Add a flask route to expose information
+app.add_url_rule("/health", "healthcheck", view_func=lambda: health.run())
+app.add_url_rule("/environment", "environment", view_func=lambda: envdump.run())
    
+    
 if __name__ == "__main__":
-    app.run(threaded=False, host='0.0.0.0')
+    app.run(threaded=False)
