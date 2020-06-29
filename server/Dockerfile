@@ -38,6 +38,8 @@ EXPOSE 5000
 
 RUN pip3 install tensorflow --user && pip3 install -r requirements.txt
 
+RUN pip3 install "connexion[swagger-ui]"
+
 #allow folder app-root
 RUN chown -R 3000:3000 /opt/
 
@@ -46,4 +48,4 @@ RUN chown -R 3000:3000 /apps/
 
 USER 3000
 
-CMD python3 -u api.py
+CMD python3 -u app.py
