@@ -30,7 +30,7 @@ def tampered_image_processing():
         return {
             'status': "Error",
             'message': e.args
-        }
+        }, 500
    
 if __name__ == "__main__":
     app.run(threaded=False, host='0.0.0.0')
