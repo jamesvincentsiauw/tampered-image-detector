@@ -59,11 +59,7 @@ def choose_model(version):
 
 def files_handler(file):
     if not allowed_file(file.filename):
-        val = {
-            'status': "Error",
-            'message': 'Bad Parameter, Check File Extension!'
-        }
-        return jsonify(val), 400
+        return "error"
 
     # check the directory to save the file
     if not os.path.exists('datas/uploads/'):
@@ -80,7 +76,7 @@ def process_prediction(model, img):
     try:
         for i in zip(model.predict_proba(img, batch_size=50), model.predict_classes(img, batch_size=50), model.predict(img, batch_size=50)):
                 val = {
-                    'status': "Success",
+                    'status': "success",
                     'message': 'Predicting Image Succeed',
                     'results': {
                         'prediction': get_class_name(i[1]),
@@ -91,6 +87,6 @@ def process_prediction(model, img):
         return val
     except Exception as e:
         return {
-            'status': "Error",
+            'status': "error",
             'message': e.args
         }

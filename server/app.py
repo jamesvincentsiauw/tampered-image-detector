@@ -14,7 +14,7 @@ def tampered_image_processing():
 
         if choose_model(requested_model) == "error":
             val = {
-                'status': "Error",
+                'status': "error",
                 'message': 'Model Not Found!'
             }
             return jsonify(val), 400
@@ -25,10 +25,17 @@ def tampered_image_processing():
         # Process file
         if not request.files['img']:
             return jsonify({
-                'message': "Bad Parameter!",
-                'status': "Error"
+                'message': "Bad Parameter! Please upload file",
+                'status': "error"
             }), 400
         filepath = files_handler(request.files['img'])
+        if filepath == "error":
+            val = {
+            'status': "error",
+            'message': 'Bad Parameter, Check File Extension!'
+            }
+            return jsonify(val), 400
+        
         img = load(filepath)
 
         result = process_prediction(model, img)
@@ -37,7 +44,7 @@ def tampered_image_processing():
     except Exception as e:
         print(e)
         return {
-            'status': "Error",
+            'status': "error",
             'message': e.args
         }, 500
     
