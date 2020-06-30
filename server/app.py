@@ -53,8 +53,7 @@ if __name__ == "__main__":
     app = connexion.App(__name__, specification_dir='openapi/')
     
     # Add a flask route to expose information
-    app.add_url_rule("/health", "healthcheck", view_func=lambda: health.run())
-    app.add_url_rule("/environment", "environment", view_func=lambda: envdump.run())
+    app.add_url_rule("/api/predictor/health", "healthcheck", view_func=lambda: health.run())
     
     # Read the swagger.yml file to configure the endpoints
     app.add_api('swagger.yaml')
