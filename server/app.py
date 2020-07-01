@@ -1,7 +1,8 @@
 from flask import Flask, request, jsonify
 import connexion
+from keras.models import load_model
 from healthcheck import HealthCheck, EnvironmentDump
-from server.controller import *
+from controller import *
 
 # Configure Healthcheck
 health = HealthCheck()
