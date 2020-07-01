@@ -1,4 +1,5 @@
 import unittest2
+import requests
 from server.controller import *
 from PIL import Image
 from keras.models import load_model
@@ -48,6 +49,27 @@ class TestController(unittest2.TestCase):
             model = load_model(model_dict[item])
             result = process_prediction(model, img)
             self.assertEqual(list(result.keys()), expected_result)
+
+    def test_api(self):
+        endpoint = 'http://34.83.91.7:5000/api/'
+
+        response = requests.get(endpoint+'ui')
+        self.assertEqual(response.status_code, 200)
+
+        file = {
+            'img': open('real-1-custom.jpg', 'rb')
+        }
+        data = {
+            'model': 'v2'
+        }
+        response = requests.post(endpoint+'predictor', files=file, data=data)
+        self.assertEqual(response.status_code, 200)
+
+        response = requests.post(endpoint + 'predictor', data=data)
+        self.assertEqual(response.status_code, 400)
+
+        response = requests.post(endpoint + 'predictor', files=file)
+        self.assertEqual(response.status_code, 400)
 
 
 if __name__ == '__main__':
