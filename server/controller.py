@@ -44,8 +44,8 @@ def load(filename):
 
 def get_class_name(label):
     if label:
-        return "Tampered Image"
-    return "Real Image"
+        return 'Tampered Image'
+    return 'Real Image'
 
 
 def choose_model(version):
@@ -56,13 +56,13 @@ def choose_model(version):
     elif version == 'v3':
         used_model = 'saved-models/model-v3-with-real-fake-dataset.h5'
     else:
-        return "error"
+        return 'error'
     return used_model
 
 
 def files_handler(file):
     if not allowed_file(file.filename):
-        return "error"
+        return 'error'
 
     # check the directory to save the file
     if not os.path.exists('datas/'):
@@ -80,17 +80,18 @@ def process_prediction(model, img):
     try:
         for i in zip(model.predict_proba(img, batch_size=50), model.predict_classes(img, batch_size=50), model.predict(img, batch_size=50)):
                 val = {
-                    'status': "success",
+                    'status': 'success',
                     'message': 'Predicting Image Succeed',
                     'results': {
                         'prediction': get_class_name(i[1]),
-                        'probability': str(round(max(i[0])*100, 2))+"%"
+                        'probability': str(round(max(i[0])*100, 2))+'%'
                     }
                 }
-        shutil.rmtree('datas')
+        if os.path.exists('datas'):
+            shutil.rmtree('datas')
         return val
     except Exception as e:
         return {
-            'status': "error",
+            'status': 'error',
             'message': e.args
         }
