@@ -23,3 +23,20 @@ http://localhost:5000/
 # Test the API
 $ curl -F 'model=v2' -F 'img=@real-1-custom.jpg' http://localhost:5000/api/predictor
 ```
+
+## How to Run Unit Testing
+``` bash
+# Clone the Repository
+$ git clone https://github.com/jamesvincentsiauw/tampered-image-detector.git
+
+# Install Dependencies
+$ pip install -r requirements.txt
+
+# Change to test Directory
+$ cd server/test
+
+# Run the Script
+$ python test_controller.py
+
+Note: if you fail to run the script via command line, please run via IDE
+```
