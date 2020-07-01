@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 import connexion
 from healthcheck import HealthCheck, EnvironmentDump
-from controller import *
+from server.controller import *
 
 # Configure Healthcheck
 health = HealthCheck()
