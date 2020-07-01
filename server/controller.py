@@ -1,6 +1,4 @@
 from PIL import Image, ImageChops, ImageEnhance
-from keras.models import load_model
-from keras.preprocessing import image
 from skimage import transform
 import numpy as np
 import os
@@ -8,9 +6,11 @@ import shutil
 
 ALLOWED_EXTENSIONS = {'tif','jpg', 'jpeg', 'png'}
 
+
 def allowed_file(filename):
     # Return boolean based on the ALLOWED_EXTENSION list
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 
 def convert_to_ela_image(path, quality):
     filename = path
@@ -33,18 +33,20 @@ def convert_to_ela_image(path, quality):
     
     return ela_im
 
+
 def load(filename):
-    image = Image.open(filename)
     np_image = convert_to_ela_image(filename, 90)
     np_image = np.array(np_image).astype('float32')/255
     np_image = transform.resize(np_image, (128, 128, 3))
     np_image = np.expand_dims(np_image, axis=0)
     return np_image
 
+
 def get_class_name(label):
     if label:
         return "Tampered Image"
     return "Real Image"
+
 
 def choose_model(version):
     if version == 'v1':
@@ -56,6 +58,7 @@ def choose_model(version):
     else:
         return "error"
     return used_model
+
 
 def files_handler(file):
     if not allowed_file(file.filename):
@@ -71,6 +74,7 @@ def files_handler(file):
     file.save(os.path.join(filepath, file.filename))
 
     return filepath+file.filename
+
 
 def process_prediction(model, img):
     try:
