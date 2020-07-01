@@ -62,11 +62,11 @@ def files_handler(file):
         return "error"
 
     # check the directory to save the file
-    if not os.path.exists('datas/uploads/'):
+    if not os.path.exists('datas/'):
         # make a directory if it doesn't exist
-        os.makedirs('datas/uploads')
+        os.makedirs('datas')
     
-    filepath = 'datas/uploads/'
+    filepath = 'datas/'
     # save file to /datas/files/finalTasks
     file.save(os.path.join(filepath, file.filename))
 
