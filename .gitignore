@@ -5,4 +5,5 @@
 /server/datas
 /server/.ipynb_checkpoints
 /server/__pycache__
+/server/test/datas
 .ipynb_checkpoints
