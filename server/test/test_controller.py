@@ -71,6 +71,10 @@ class TestController(unittest2.TestCase):
         response = requests.post(endpoint + 'predictor', files=file)
         self.assertEqual(response.status_code, 400)
 
+    def test_ela(self):
+        filepath = 'real-1-custom.jpg'
+        self.assertEqual(type(convert_to_ela_image(filepath, 90)), Image.Image)
+
 
 if __name__ == '__main__':
     unittest2.main()
