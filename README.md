@@ -40,3 +40,8 @@ $ python test_controller.py
 
 Note: if you fail to run the script via command line, please run via IDE
 ```
+
+### Additional Notes
+API Documentation: https://docs.google.com/document/d/1QTPX-UJeraMyPCkQgoGfW7LYLl80uboxd3x-PBdJPTg/edit?usp=sharing
+
+Project Documentation: https://docs.google.com/document/d/1844Wf_I-7o62gJUkZlqM5xkFdGI9dpqIzkXdf2HuHdM/edit?usp=sharing
