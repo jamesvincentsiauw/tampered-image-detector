@@ -55,8 +55,6 @@ def choose_model(version):
         used_model = 'saved-models/model-v2-with-mixed-dataset.h5'
     elif version == 'v3':
         used_model = 'saved-models/model-v3-with-real-fake-dataset.h5'
-    elif version == 'v4':
-        used_model = 'saved-models/model-v4-with-adam-optmimizer.h5'
     else:
         return 'error'
     return used_model
