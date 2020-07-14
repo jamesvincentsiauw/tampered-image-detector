@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>API Testing - Predictor</name>
+   <tag>DOKU</tag>
+   <comment></comment>
+   <testCaseGuid>344b0593-48dd-4879-9438-15b624b2131a</testCaseGuid>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>c0657f39-b42a-439b-a585-8cf1ad1bf5a7</id>
+      <masked>false</masked>
+      <name>model</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>1bfd7492-b2d6-4e7a-8297-38bd47f802d3</id>
+      <masked>false</masked>
+      <name>img</name>
+   </variable>
+</TestCaseEntity>

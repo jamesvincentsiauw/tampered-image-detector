@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataFileEntity>
+   <description></description>
+   <name>datafile</name>
+   <tag></tag>
+   <containsHeaders>true</containsHeaders>
+   <csvSeperator></csvSeperator>
+   <dataFileGUID>8f6aafbf-45ff-4371-be37-3fdc79434763</dataFileGUID>
+   <dataSourceUrl></dataSourceUrl>
+   <driver>InternalData</driver>
+   <data>v1 Data+Files%2Freal-1-custom.jpg</data>
+   <data>v2 Data+Files%2Freal-1-custom.jpg</data>
+   <data>v3 Data+Files%2Freal-1-custom.jpg</data>
+   <data>v1 Data+Files%2Freal-3-custom.jpg</data>
+   <data>v2 Data+Files%2Freal-3-custom.jpg</data>
+   <data>v3 Data+Files%2Freal-3-custom.jpg</data>
+   <data>v1 Data+Files%2Ftampered-1-custom.jpg</data>
+   <data>v2 Data+Files%2Ftampered-1-custom.jpg</data>
+   <data>v3 Data+Files%2Ftampered-1-custom.jpg</data>
+   <data>v1 Data+Files%2Ftampered-3-custom.jpg</data>
+   <data>v2 Data+Files%2Ftampered-3-custom.jpg</data>
+   <data>v3 Data+Files%2Ftampered-3-custom.jpg</data>
+   <internalDataColumns>
+      <columnIndex>0</columnIndex>
+      <name>model</name>
+      <size>12</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>1</columnIndex>
+      <name>img</name>
+      <size>12</size>
+   </internalDataColumns>
+   <isInternalPath>false</isInternalPath>
+   <query></query>
+   <secureUserAccount>false</secureUserAccount>
+   <sheetName></sheetName>
+   <usingGlobalDBSetting>false</usingGlobalDBSetting>
+</DataFileEntity>
