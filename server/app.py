@@ -46,9 +46,9 @@ def tampered_image_processing():
     except Exception as e:
         print(e)
         return {
-                   'status': 'error',
-                   'message': e.args
-               }, 500
+            'status': 'error',
+            'message': e.args
+        }, 500
 
 
 if __name__ == '__main__':
