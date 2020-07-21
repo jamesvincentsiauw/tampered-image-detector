@@ -15,6 +15,22 @@ info:
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
 
 paths:
+  /produce:
+    get:
+      tags:
+        - Kafka
+      summary: Kafka Services
+      operationId: app.produce
+#      parameters:
+#        - in: query
+#          name: 'msg'
+#          schema:
+#            type: string
+      responses:
+        '200':
+          description: Prediction Succeed
+        '400':
+          description: Bad input parameter
   /predictor:
     post:
       tags: 
