@@ -6,6 +6,7 @@
 /server/.ipynb_checkpoints
 /server/__pycache__
 /server/test/datas
+/server/*.jpg
 /server/saved-models/model-v4-with-adam-optimizer.h5
 .ipynb_checkpoints
 *.resaved.jpg
