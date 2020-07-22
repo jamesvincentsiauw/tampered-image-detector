@@ -1,11 +1,13 @@
+import base64
+import uuid
+import cv2
+import requests
 import connexion
-import uuid, base64
-from flask import request, jsonify, Response
-from keras.models import load_model
-from healthcheck import HealthCheck
-from controller import *
-from kafka import KafkaProducer
 from config.kafka_producer_config import producer
+from controller import *
+from flask import request, jsonify
+from healthcheck import HealthCheck
+from keras.models import load_model
 
 # Configure Healthcheck
 health = HealthCheck()
@@ -57,63 +59,36 @@ def tampered_image_processing():
 def produce():
     try:
         topic = 'tampered-image'
-        bootstrap_servers = ['localhost:9092']
-
-        with open('real-1-custom.jpg', "rb") as image_file:
-            img_1 = base64.b64encode(image_file.read())
 
         data = {
-            'img': img_1.decode()
+            'model': 'v2',
+            'img': request.args.get('url'),
+            'file': 'data/'+str(uuid.uuid4())+'.jpg'
         }
 
         producer().send(
                 topic=topic,
                 value=data,
                 key=str(uuid.uuid4())
-            )
+            ).add_callback(success).add_errback(error)
 
         producer().flush()
 
-        return 'success'
+        response_message = 'Send Produce Topic Success'
     except Exception as e:
-        return e.args
-
-    # try:
-    #     topic = 'tampered-image'
-
-    #     image = request.files['img']
-    #     model = request.form['model']
-    #
-    #     # Prepare data for Kafka processing
-    #     data = {
-    #         'img': image,
-    #         'model': model
-    #     }
-    #     kafka_message = data
-    #
-    #     producer().send(
-    #         topic=topic,
-    #         value=kafka_message,
-    #         key=uuid.uuid4()
-    #     ).add_callback(success).add_errback(error)
-    #
-    #     # block until all async messages are sent
-    #     producer().flush()
-    #     response_message = 'Send Produce Topic Success'
-    # except Exception as e:
-    #     print(e)
-    #     response_message = 'Send Produce Topic Failed'
-    # return Response(response_message)
+        print(e.args)
+        response_message = 'Send Produce Topic Failed'
+    return response_message
 
 
 # Kafka success message
 def success(rec):
-  print('> message delivered to %s with partition %d and offset %d' % (rec.topic, rec.partition, rec.offset))
+    print('> message delivered to %s with partition %d and offset %d' % (rec.topic, rec.partition, rec.offset))
 
 
 # Kafka exception message
 def error(exception):
-  print('> message unsent with exception:', exception)
+    print('> message unsent with exception:', exception)
 
 
 if __name__ == '__main__':
