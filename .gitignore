@@ -2,7 +2,7 @@
 /datasets
 /custom test data
 /project_env
-/server/datas
+/server/data
 /server/.ipynb_checkpoints
 /server/__pycache__
 /server/test/datas
