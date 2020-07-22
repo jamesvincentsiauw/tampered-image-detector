@@ -21,11 +21,12 @@ paths:
         - Kafka
       summary: Kafka Services
       operationId: app.produce
-#      parameters:
-#        - in: query
-#          name: 'msg'
-#          schema:
-#            type: string
+      parameters:
+        - in: query
+          name: 'url'
+          schema:
+            type: string
+          example: https://i.imgur.com/h5ERPQ2.jpg
       responses:
         '200':
           description: Prediction Succeed

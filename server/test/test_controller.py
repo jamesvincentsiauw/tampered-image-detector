@@ -16,7 +16,7 @@ class TestController(unittest2.TestCase):
 
     def test_files_handler(self):
         file = Image.open('real-1-custom.jpg')
-        file_expected_result = 'datas/real-1-custom.jpg'
+        file_expected_result = 'data/real-1-custom.jpg'
 
         self.assertEqual(files_handler(file), file_expected_result)
 
