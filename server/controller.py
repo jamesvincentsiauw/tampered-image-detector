@@ -67,12 +67,12 @@ def files_handler(file):
         return 'error'
 
     # check the directory to save the file
-    if not os.path.exists('datas/'):
+    if not os.path.exists('data/'):
         # make a directory if it doesn't exist
-        os.makedirs('datas')
+        os.makedirs('data')
 
-    filepath = 'datas/'
-    # save file to /datas/files/finalTasks
+    filepath = 'data/'
+    # save file to /data/files/finalTasks
     file.save(os.path.join(filepath, file.filename))
 
     return filepath + file.filename
@@ -90,8 +90,8 @@ def process_prediction(model, img):
                     'probability': str(round(max(i[0]) * 100, 2)) + '%'
                 }
             }
-        if os.path.exists('datas'):
-            shutil.rmtree('datas')
+        if os.path.exists('data'):
+            shutil.rmtree('data')
         return val
     except Exception as e:
         return {
