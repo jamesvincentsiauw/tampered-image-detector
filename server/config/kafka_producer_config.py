@@ -16,7 +16,7 @@ def producer():
         compression_type='gzip', # Just use default compression: gzip
         request_timeout_ms=producer_timeout,
         bootstrap_servers=bootstrap_servers,
-        key_serializer=uuid.uuid4(),
+        key_serializer=str.encode,
 
         # Config for image
         value_serializer=lambda m: json.dumps(m).encode('utf-8')
