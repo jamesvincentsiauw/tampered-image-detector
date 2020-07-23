@@ -9,5 +9,6 @@
 /server/test/datas
 /server/*.jpg
 /server/saved-models/model-v4-with-adam-optimizer.h5
+/server/config/__pycache__
 .ipynb_checkpoints
 *.resaved.jpg
