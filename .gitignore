@@ -1,4 +1,5 @@
 .idea/
+/server/.vscode
 /datasets
 /custom test data
 /project_env
