@@ -76,7 +76,7 @@ def produce():
 
         response_message = 'Send Produce Topic Success'
     except Exception as e:
-        print(e.args)
+        print(e)
         response_message = 'Send Produce Topic Failed'
     return response_message
 
