@@ -58,7 +58,7 @@ def tampered_image_processing():
 # Method for Kafka Producer
 def produce():
     try:
-        topic = 'tampered-image'
+        topic = 'streaming-tampered-image'
 
         data = {
             'model': 'v2',

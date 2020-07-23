@@ -4,10 +4,11 @@ import re
 import urllib.request
 import os
 from controller import *
+from config.kafka_producer_config import producer
 from kafka import KafkaConsumer
 from keras.models import load_model
 
-topic = 'tampered-image'
+topic = 'streaming-tampered-image'
 bootstrap_servers = ['localhost:9092']
 consumer_timeout = 1000
 group_id = 'topic-group'
