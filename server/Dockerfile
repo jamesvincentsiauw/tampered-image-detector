@@ -48,4 +48,9 @@ RUN chown -R 3000:3000 /apps/
 
 USER 3000
 
+# If you only want to run the API
 CMD python3 -u app.py
+
+# If you want to run API and Kafka Service
+# Please ensure that Zookeeper and Kafka Broker already running before run the docker 
+# CMD python3 -u app.py & python3 -u kafka_consumer_service.py
