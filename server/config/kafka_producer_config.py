@@ -1,9 +1,13 @@
 from kafka import KafkaProducer
+from dotenv import load_dotenv
 import json
 import pickle
 import uuid
+import os
 
-bootstrap_servers = ['localhost:9092']
+load_dotenv()
+server = os.getenv('KAFKA_IP_SERVER')
+bootstrap_servers = [server]
 producer_timeout = 2000
 
 

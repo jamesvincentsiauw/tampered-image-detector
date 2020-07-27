@@ -8,10 +8,13 @@ from controller import *
 from config.kafka_producer_config import producer
 from kafka import KafkaConsumer
 from keras.models import load_model
+from dotenv import load_dotenv
 
+load_dotenv()
+server = os.getenv('KAFKA_IP_SERVER')
 topic = 'streaming-tampered-image'
 client_topic = 'streaming-tampered-image-response'
-bootstrap_servers = ['localhost:9092']
+bootstrap_servers = [server]
 consumer_timeout = 1000
 group_id = 'topic-group'
 
