@@ -8,6 +8,12 @@ $ git clone https://github.com/jamesvincentsiauw/tampered-image-detector.git
 # Change to Server Directory
 $ cd server
 
+# Copy .env.example to .env
+$ cp .env.example .env
+
+# Change KAFKA_IP_SERVER in .env file with your IP
+KAFKA_IP_SERVER = YOUR_IP_ADDRESS
+
 # Build the App Image
 $ docker build -t tampered-image-detector:latest .
 
