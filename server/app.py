@@ -8,6 +8,7 @@ from controller import *
 from flask import request, jsonify
 from healthcheck import HealthCheck
 from keras.models import load_model
+from flask_cors import CORS
 
 # Configure Healthcheck
 health = HealthCheck()
@@ -94,6 +95,8 @@ def error(exception):
 if __name__ == '__main__':
     # Create the application instance
     app = connexion.App(__name__, specification_dir='openapi/')
+
+    CORS(app.app)
 
     # Add a flask route to expose information
     app.add_url_rule('/api/predictor/health', 'healthcheck', view_func=lambda: health.run())

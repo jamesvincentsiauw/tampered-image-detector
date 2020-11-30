@@ -45,9 +45,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              required: 
-                - img
-                - model
               properties:
                 img:
                   type: string

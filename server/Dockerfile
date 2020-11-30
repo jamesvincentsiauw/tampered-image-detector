@@ -14,6 +14,8 @@ RUN yum install -y \
     && yum clean all
 
 ADD requirements.txt /apps/tampered-image-detector/requirements.txt
+
+RUN pip3 install --upgrade pip
 RUN pip3 install -r /apps/tampered-image-detector/requirements.txt
 
 RUN yum install gcc -y
@@ -25,7 +27,7 @@ RUN yum install automake libtool -y
 RUN yum install gcc-c++ -y
 
 RUN pip3 install opencv-python-headless
-RUN pip3 install tensorflow
+RUN pip3 install tensorflow==2.2.0
 
 RUN yum -y install libpng-devel libtiff-devel libjpeg-devel
 
@@ -37,6 +39,8 @@ WORKDIR /apps/tampered-image-detector
 EXPOSE 5000
 
 RUN pip3 install tensorflow --user && pip3 install -r requirements.txt
+
+RUN pip3 install flask_cors
 
 RUN pip3 install "connexion[swagger-ui]"
 
@@ -53,4 +57,4 @@ USER 3000
 
 # If you want to run API and Kafka Service
 # Please ensure that Zookeeper and Kafka Broker already running before run the docker 
-CMD python3 -u app.py & python3 -u kafka_consumer_service.py
+CMD python3 -u app.py 
