@@ -6,6 +6,6 @@ scikit-image==0.17.2
 Flask==1.1.2
 numpy==1.18.4
 Keras==2.3.1
-Pillow==7.1.2
+Pillow==8.3.2
 kafka-python==2.0.1
 python-dotenv==0.14.0
